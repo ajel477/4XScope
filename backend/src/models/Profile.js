@@ -8,6 +8,15 @@ const profileSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+
     fullName: {
       type: String,
       required: true,
@@ -30,6 +39,7 @@ const profileSchema = new mongoose.Schema(
     },
     skills: [String],
   },
+  
   { timestamps: true }
 );
 

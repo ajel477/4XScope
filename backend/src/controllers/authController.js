@@ -6,6 +6,14 @@ export const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    const allowedDomain = "@srmist.edu.in";
+
+if (!email.endsWith(allowedDomain)) {
+  return res.status(400).json({
+    message: "Only SRM University email IDs are allowed"
+  });
+}
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
